@@ -3,11 +3,15 @@ import cors from 'cors'
 
 const app = express()
 
-// Allow all origins (for deployment)
 app.use(cors())
-
 app.use(express.json())
 
+// ✅ ADD THIS HERE
+app.get('/', (req, res) => {
+  res.send("Backend is running 🚀")
+})
+
+// Your existing API
 app.post('/pay', (req, res) => {
   const { course, price, email, upi } = req.body
 
@@ -19,8 +23,9 @@ app.post('/pay', (req, res) => {
   }, 1500)
 })
 
-const PORT = process.env.PORT || 3000;
+// PORT (already fixed)
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`);
-});
+  console.log(`Backend running on port ${PORT}`)
+})
