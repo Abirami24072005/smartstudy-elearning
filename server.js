@@ -3,8 +3,9 @@ import cors from 'cors'
 
 const app = express()
 
-// Allow requests from React dev server
-app.use(cors({ origin: 'http://localhost:5173' }))
+// Allow all origins (for deployment)
+app.use(cors())
+
 app.use(express.json())
 
 app.post('/pay', (req, res) => {
